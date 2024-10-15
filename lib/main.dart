@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets/nav_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,36 +38,42 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Row(
+      body: Stack(
+        children: [
+          const NavBar(),
+          Center(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Current nav bar:',
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Current nav bar:',
+                    ),
+                    Text(
+                      '$_counter',
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                  ],
                 ),
-                Text(
-                  '$_counter',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Change nav bar?',
+                    ),
+                    FloatingActionButton(
+                      onPressed: _incrementCounter,
+                      tooltip: 'Increment',
+                      child: const Icon(Icons.arrow_forward),
+                    ),
+                  ],
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Change nav bar?',
-                ),
-                FloatingActionButton(
-                  onPressed: _incrementCounter,
-                  tooltip: 'Increment',
-                  child: const Icon(Icons.arrow_forward),
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
