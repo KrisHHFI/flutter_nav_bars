@@ -11,6 +11,8 @@ class NavBarOne extends StatefulWidget {
 
 class NavBarOneState extends State<NavBarOne> {
   bool isMenuOpen = false;
+  double navBarImageHeight = 30.00;
+  double smallPadding = 16.00;
 
   // To track which item is hovered
   String? hoveredItem;
@@ -67,14 +69,14 @@ class NavBarOneState extends State<NavBarOne> {
             ),
           ),
         Container(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(smallPadding),
           color: const Color.fromRGBO(0, 0, 0, 0.2),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.network(
                 logo,
-                height: 30,
+                height: navBarImageHeight,
                 fit: BoxFit.contain,
               ),
               if (isSmallScreen)
@@ -88,7 +90,7 @@ class NavBarOneState extends State<NavBarOne> {
                     },
                     child: Image.network(
                       'images/Menu.png',
-                      height: 30,
+                      height: navBarImageHeight,
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -149,7 +151,8 @@ class NavBarOneState extends State<NavBarOne> {
             child: Align(
               alignment: Alignment.topCenter,
               child: Padding(
-                padding: const EdgeInsets.only(top: 62.0),
+                padding: EdgeInsets.only(
+                    top: navBarImageHeight + smallPadding + smallPadding),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -169,7 +172,8 @@ class NavBarOneState extends State<NavBarOne> {
                             });
                           },
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16.0),
+                            padding:
+                                EdgeInsets.symmetric(vertical: smallPadding),
                             child: GestureDetector(
                               child: Stack(
                                 children: [
@@ -199,7 +203,7 @@ class NavBarOneState extends State<NavBarOne> {
                     ),
                     const SizedBox(height: 100),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 16.0),
+                      padding: EdgeInsets.only(bottom: smallPadding),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: socialIcons.map((social) {
@@ -212,7 +216,7 @@ class NavBarOneState extends State<NavBarOne> {
                                 onTap: () => _launchURL(social['url']!),
                                 child: Image.network(
                                   social['icon']!,
-                                  height: 30,
+                                  height: navBarImageHeight,
                                   fit: BoxFit.contain,
                                 ),
                               ),
