@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widgets/page_content.dart';
-import 'widgets/nav_bar.dart';
+import 'widgets/nav_bar_one.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,8 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return const Scaffold(
       body: Stack(
         children: [
-          NavBar(),
           PageContent(),
+          NavBarOne(),
         ],
       ),
     );
