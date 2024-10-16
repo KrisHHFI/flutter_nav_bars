@@ -13,6 +13,9 @@ class NavBarOneState extends State<NavBarOne> {
   bool isMenuOpen = false;
   double navBarImageHeight = 30.00;
   double smallPadding = 16.00;
+  String smallLogo = 'images/XLogo.png';
+  String largeLogo = 'images/XLogoCompany.png';
+  String menuIcon = 'images/Menu.png';
 
   // To track which item is hovered
   String? hoveredItem;
@@ -52,13 +55,12 @@ class NavBarOneState extends State<NavBarOne> {
   @override
   Widget build(BuildContext context) {
     bool isSmallScreen = MediaQuery.of(context).size.width < 600;
-    String logo =
-        isSmallScreen ? 'images/XLogo.png' : 'images/XLogoCompany.png';
+    String logo = isSmallScreen ? smallLogo : largeLogo;
 
-    // The content which is returned to the screen
+    // The content which is returned to the screen ----------------------------
     return Stack(
       children: [
-        // Blurs the entire page behind the mobile nav
+        // Blurs the entire page behind the mobile nav ----------------------------
         if (isMenuOpen && isSmallScreen)
           Positioned.fill(
             child: BackdropFilter(
@@ -68,6 +70,7 @@ class NavBarOneState extends State<NavBarOne> {
               ),
             ),
           ),
+        // The nav bar container and logo ----------------------------
         Container(
           padding: EdgeInsets.all(smallPadding),
           color: const Color.fromRGBO(0, 0, 0, 0.2),
@@ -79,6 +82,7 @@ class NavBarOneState extends State<NavBarOne> {
                 height: navBarImageHeight,
                 fit: BoxFit.contain,
               ),
+              // Mobile nav top bar ----------------------------
               if (isSmallScreen)
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
@@ -89,12 +93,13 @@ class NavBarOneState extends State<NavBarOne> {
                       });
                     },
                     child: Image.network(
-                      'images/Menu.png',
+                      menuIcon,
                       height: navBarImageHeight,
                       fit: BoxFit.contain,
                     ),
                   ),
                 )
+              // The nav bar links ----------------------------
               else
                 Row(
                   children: navLinks.map((item) {
