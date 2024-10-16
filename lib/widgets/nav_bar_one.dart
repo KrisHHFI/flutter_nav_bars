@@ -153,12 +153,9 @@ class NavBarOneState extends State<NavBarOne> {
         // The opened hamburger menu ----------------------------
         if (isMenuOpen && isSmallScreen)
           Align(
-            alignment: Alignment.topCenter,
             child: Padding(
-              padding: EdgeInsets.only(
-                  top: navBarImageHeight + smallPadding + smallPadding),
+              padding: const EdgeInsets.only(top: 100.00),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Column(
                     children: navLinks.map((item) {
