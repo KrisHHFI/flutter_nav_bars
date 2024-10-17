@@ -153,78 +153,76 @@ class NavBarOneState extends State<NavBarOne> {
         // The opened hamburger menu ----------------------------
         if (isMenuOpen && isSmallScreen)
           Align(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 100.00),
-              child: Column(
-                children: [
-                  Column(
-                    children: navLinks.map((item) {
-                      bool isHovered = hoveredItem == item;
-                      return MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        onEnter: (_) {
-                          setState(() {
-                            hoveredItem = item;
-                          });
-                        },
-                        onExit: (_) {
-                          setState(() {
-                            hoveredItem = null;
-                          });
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: smallPadding),
-                          child: GestureDetector(
-                            child: Stack(
-                              children: [
-                                if (isHovered)
-                                  Positioned(
-                                    bottom: 0,
-                                    left: 0,
-                                    right: 0,
-                                    child: Container(
-                                      height: 2,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                Text(
-                                  item,
-                                  style: const TextStyle(
+            child: Column(
+              children: [
+                const SizedBox(height: 100),
+                Column(
+                  children: navLinks.map((item) {
+                    bool isHovered = hoveredItem == item;
+                    return MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      onEnter: (_) {
+                        setState(() {
+                          hoveredItem = item;
+                        });
+                      },
+                      onExit: (_) {
+                        setState(() {
+                          hoveredItem = null;
+                        });
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: smallPadding),
+                        child: GestureDetector(
+                          child: Stack(
+                            children: [
+                              if (isHovered)
+                                Positioned(
+                                  bottom: 0,
+                                  left: 0,
+                                  right: 0,
+                                  child: Container(
+                                    height: 2,
                                     color: Colors.white,
-                                    fontSize: 24,
                                   ),
                                 ),
-                              ],
-                            ),
+                              Text(
+                                item,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      );
-                    }).toList(),
-                  ),
-                  // Spacing inbetween the links and the icons
-                  const SizedBox(height: 75),
-                  // The hamburger icons ----------------------------
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: socialIcons.map((social) {
-                      return MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                          child: GestureDetector(
-                            onTap: () => _launchURL(social['url']!),
-                            child: Image.network(
-                              social['icon']!,
-                              height: navBarImageHeight,
-                              fit: BoxFit.contain,
-                            ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+                // Spacing inbetween the links and the icons
+                const SizedBox(height: 75),
+                // The hamburger icons ----------------------------
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: socialIcons.map((social) {
+                    return MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                        child: GestureDetector(
+                          onTap: () => _launchURL(social['url']!),
+                          child: Image.network(
+                            social['icon']!,
+                            height: navBarImageHeight,
+                            fit: BoxFit.contain,
                           ),
                         ),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ],
             ),
           ),
       ],
