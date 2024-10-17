@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/nav_bar_one.dart';
 import '../widgets/nav_bar_two.dart';
+import '../widgets/nav_bar_three.dart';
 
 class NavBarProvider with ChangeNotifier {
   final List<Map<String, dynamic>> navBars = [
@@ -11,6 +12,10 @@ class NavBarProvider with ChangeNotifier {
     {
       'name': 'Bottom horizontal navigation bar, with hamburger menu.',
       'widget': const NavBarTwo(),
+    },
+    {
+      'name': 'Side vertical navigation bar, with hamburger menu.',
+      'widget': const NavBarThree(),
     },
   ];
 
