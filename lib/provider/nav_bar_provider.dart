@@ -9,7 +9,7 @@ class NavBarProvider with ChangeNotifier {
       'widget': const NavBarOne(),
     },
     {
-      'name': 'Standard vertical navigation bar.',
+      'name': 'Bottom horizontal navigation bar, with hamburger menu.',
       'widget': const NavBarTwo(),
     },
   ];

@@ -33,20 +33,25 @@ class PageContentState extends State<PageContent> {
                 ),
               ],
             ),
+            const SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
                   'Change nav bar?',
                 ),
-                FloatingActionButton(
-                  onPressed: () {
-                    // Change the nav bar when the button is pressed
-                    Provider.of<NavBarProvider>(context, listen: false)
-                        .nextNavBar();
-                  },
-                  tooltip: 'Change Nav Bar',
-                  child: const Icon(Icons.arrow_forward),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      // Change the nav bar when the button is pressed
+                      Provider.of<NavBarProvider>(context, listen: false)
+                          .nextNavBar();
+                    },
+                    tooltip: 'Change Nav Bar',
+                    mini: true,
+                    child: const Icon(Icons.arrow_forward),
+                  ),
                 ),
               ],
             ),
