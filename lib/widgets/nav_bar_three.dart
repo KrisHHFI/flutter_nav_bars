@@ -56,6 +56,7 @@ class NavBarThreeState extends State<NavBarThree> {
   Widget build(BuildContext context) {
     bool isSmallScreen = MediaQuery.of(context).size.width < 600;
     String logo = isSmallScreen ? smallLogo : largeLogo;
+    double logoDividerWidth = isSmallScreen ? 50 : 150;
 
     // The content which is returned to the screen ----------------------------
     return Stack(
@@ -83,7 +84,14 @@ class NavBarThreeState extends State<NavBarThree> {
                   height: navBarImageHeight,
                   fit: BoxFit.contain,
                 ),
-                const SizedBox(height: 30),
+                SizedBox(
+                  width: logoDividerWidth,
+                  child: Divider(
+                    color: Colors.white,
+                    thickness: 2,
+                  ),
+                ),
+                const SizedBox(height: 20),
                 // Mobile nav top bar ----------------------------
                 if (isSmallScreen)
                   MouseRegion(
