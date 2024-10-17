@@ -10,14 +10,6 @@ class PageContent extends StatefulWidget {
 }
 
 class PageContentState extends State<PageContent> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // Access the currentNavBar from the NavBarProvider
@@ -48,8 +40,12 @@ class PageContentState extends State<PageContent> {
                   'Change nav bar?',
                 ),
                 FloatingActionButton(
-                  onPressed: _incrementCounter,
-                  tooltip: 'Increment',
+                  onPressed: () {
+                    // Change the nav bar when the button is pressed
+                    Provider.of<NavBarProvider>(context, listen: false)
+                        .nextNavBar();
+                  },
+                  tooltip: 'Change Nav Bar',
                   child: const Icon(Icons.arrow_forward),
                 ),
               ],

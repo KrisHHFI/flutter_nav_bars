@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/nav_bar_one.dart';
+import '../widgets/nav_bar_two.dart';
 
 class NavBarProvider with ChangeNotifier {
   final List<Map<String, dynamic>> navBars = [
@@ -7,22 +8,22 @@ class NavBarProvider with ChangeNotifier {
       'name': 'Standard top horizontal navigation bar, with hamburger menu.',
       'widget': const NavBarOne(),
     },
+    {
+      'name': 'Standard vertical navigation bar.',
+      'widget': const NavBarTwo(),
+    },
   ];
 
   // By default, the first item will be the current nav bar
-  Map<String, dynamic> _currentNavBar;
+  int _currentIndex = 0;
 
-  NavBarProvider()
-      : _currentNavBar = {
-          'name':
-              'Top horizontal standard navigation bar, with hamburger menu.',
-          'widget': const NavBarOne(),
-        };
+  NavBarProvider();
 
-  Map<String, dynamic> get currentNavBar => _currentNavBar;
+  Map<String, dynamic> get currentNavBar => navBars[_currentIndex];
 
-  void setNavBar(Map<String, dynamic> newNavBar) {
-    _currentNavBar = newNavBar;
+  void nextNavBar() {
+    _currentIndex =
+        (_currentIndex + 1) % navBars.length; // Loop back to the start
     notifyListeners();
   }
 }
