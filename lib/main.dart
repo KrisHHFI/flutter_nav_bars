@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'widgets/page_content.dart';
-import 'widgets/nav_bar_one.dart';
+import 'provider/nav_bar_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Different Nav Bars',
-      home: MyHomePage(title: 'Different Nav Bars'),
+    return ChangeNotifierProvider(
+      create: (context) => NavBarProvider(),
+      child: const MaterialApp(
+        title: 'Different Nav Bars',
+        home: MyHomePage(title: 'Different Nav Bars'),
+      ),
     );
   }
 }
@@ -30,11 +34,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    // Access the current nav bar from the provider
+    final currentNavBar = Provider.of<NavBarProvider>(context).currentNavBar;
+
+    return Scaffold(
       body: Stack(
         children: [
-          PageContent(),
-          NavBarOne(),
+          const PageContent(),
+          currentNavBar['widget'],
         ],
       ),
     );
