@@ -75,8 +75,8 @@ class NavBarThreeState extends State<NavBarThree> {
         Align(
           alignment: Alignment.centerLeft,
           child: Container(
-            padding: EdgeInsets.all(smallPadding),
-            color: const Color.fromRGBO(0, 0, 0, 0.2),
+            padding: EdgeInsets.fromLTRB(10, smallPadding, 10, 10),
+            color: Color.fromRGBO(187, 187, 187, 1),
             child: Column(
               children: [
                 Image.network(
