@@ -164,7 +164,7 @@ class NavBarThreeState extends State<NavBarThree> {
         // The opened hamburger menu ----------------------------
         if (isMenuOpen && isSmallScreen)
           Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Column(
                 children: navLinks.map((item) {

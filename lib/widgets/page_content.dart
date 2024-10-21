@@ -13,18 +13,21 @@ class PageContent extends StatefulWidget {
 class PageContentState extends State<PageContent> {
   @override
   Widget build(BuildContext context) {
+    bool isSmallScreen = MediaQuery.of(context).size.width < 600;
+
     // Access the currentNavBar from the NavBarProvider
     final currentNavBar = Provider.of<NavBarProvider>(context).currentNavBar;
     bool leftPadding = currentNavBar['padding'] == 'left';
+    double leftPaddingPixels = isSmallScreen ? 70 : 170;
 
     return Center(
       child: Padding(
         padding: EdgeInsets.only(
-          left: leftPadding ? 170.0 : 16.0,
+          left: leftPadding ? leftPaddingPixels : 16,
           right: 16.0,
         ),
         child: Container(
-          color: Colors.red, // For testing purposes
+          //color: Colors.red, // For testing purposes
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
