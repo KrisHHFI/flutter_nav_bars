@@ -15,53 +15,55 @@ class PageContentState extends State<PageContent> {
   Widget build(BuildContext context) {
     // Access the currentNavBar from the NavBarProvider
     final currentNavBar = Provider.of<NavBarProvider>(context).currentNavBar;
-    bool isNavBarThree = currentNavBar['widget'] is NavBarThree;
+    bool leftPadding = currentNavBar['padding'] == 'left';
 
     return Center(
       child: Padding(
         padding: EdgeInsets.only(
-          // Pushes the page content to the right if left vertical nav bar
-          left: isNavBarThree ? 75.0 : 16.0,
+          left: leftPadding ? 170.0 : 16.0,
           right: 16.0,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Wrap(
-              alignment: WrapAlignment.center,
-              children: [
-                const Text(
-                  'Current nav bar: ',
-                ),
-                Text(
-                  currentNavBar['name'],
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            const SizedBox(height: 25),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Change nav bar?',
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      // Change the nav bar when the button is pressed
-                      Provider.of<NavBarProvider>(context, listen: false)
-                          .nextNavBar();
-                    },
-                    tooltip: 'Change Nav Bar',
-                    mini: true,
-                    child: const Icon(Icons.arrow_forward),
+        child: Container(
+          color: Colors.red, // For testing purposes
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Wrap(
+                alignment: WrapAlignment.center,
+                children: [
+                  const Text(
+                    'Current nav bar: ',
                   ),
-                ),
-              ],
-            ),
-          ],
+                  Text(
+                    currentNavBar['name'],
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 25),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Change nav bar?',
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        // Change the nav bar when the button is pressed
+                        Provider.of<NavBarProvider>(context, listen: false)
+                            .nextNavBar();
+                      },
+                      tooltip: 'Change Nav Bar',
+                      mini: true,
+                      child: const Icon(Icons.arrow_forward),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -16,6 +16,7 @@ class NavBarProvider with ChangeNotifier {
     {
       'name': 'Side vertical navigation bar, with hamburger menu.',
       'widget': const NavBarThree(),
+      'padding': 'left',
     },
   ];
 
