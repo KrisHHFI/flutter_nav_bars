@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'triangle_painter.dart';
 
 class NavBarFour extends StatefulWidget {
   const NavBarFour({super.key});
@@ -149,6 +150,13 @@ class NavBarFourState extends State<NavBarFour> {
                 ),
             ],
           ),
+        ),
+        CustomPaint(
+          size: Size(
+              // Screen width as triangle length
+              MediaQuery.of(context).size.width,
+              100), // Set the size of the canvas
+          painter: TrianglePainter(), // Use the TrianglePainter
         ),
         // The opened hamburger menu ----------------------------
         if (isMenuOpen && isSmallScreen)
