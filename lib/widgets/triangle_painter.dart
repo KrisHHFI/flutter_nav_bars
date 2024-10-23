@@ -5,7 +5,8 @@ class TrianglePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Define the paint for the triangle
     final paint = Paint()
-      ..color = Colors.blue // Set triangle color
+      //..color = Colors.red //testing colour
+      ..color = Color.fromRGBO(0, 0, 0, 0.2)
       ..style = PaintingStyle.fill; // Fill the shape
 
     // Define the path for the vertically flipped right-angled triangle

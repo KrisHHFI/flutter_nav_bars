@@ -7,20 +7,20 @@ import '../widgets/nav_bar_four.dart';
 class NavBarProvider with ChangeNotifier {
   final List<Map<String, dynamic>> navBars = [
     {
-      'name': '1. Standard top horizontal navigation bar, with hamburger menu.',
+      'name': '1. Standard top horizontal navigation bar',
       'widget': const NavBarOne(),
     },
     {
-      'name': '2. Bottom horizontal navigation bar, with hamburger menu.',
+      'name': '2. Bottom horizontal navigation bar',
       'widget': const NavBarTwo(),
     },
     {
-      'name': '3. Side vertical navigation bar, with hamburger menu.',
+      'name': '3. Side vertical navigation bar',
       'widget': const NavBarThree(),
       'padding': 'left',
     },
     {
-      'name': '4.',
+      'name': '4. Slanted top horizontal navigtion bar',
       'widget': const NavBarFour(),
     },
   ];

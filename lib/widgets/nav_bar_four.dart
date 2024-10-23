@@ -72,91 +72,100 @@ class NavBarFourState extends State<NavBarFour> {
             ),
           ),
         // The nav bar container and logo ----------------------------
-        Container(
-          padding: EdgeInsets.all(smallPadding),
-          color: const Color.fromRGBO(0, 0, 0, 0.2),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.network(
-                logo,
-                height: navBarImageHeight,
-                fit: BoxFit.contain,
-              ),
-              // Mobile nav top bar ----------------------------
-              if (isSmallScreen)
-                MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isMenuOpen = !isMenuOpen;
-                      });
-                    },
-                    child: Image.network(
-                      menuIcon,
-                      height: navBarImageHeight,
-                      fit: BoxFit.contain,
-                    ),
+        Column(
+          children: [
+            Container(
+              padding: EdgeInsets.only(
+                  left: smallPadding,
+                  top: smallPadding,
+                  right: smallPadding,
+                  bottom: 5),
+              color: const Color.fromRGBO(0, 0, 0, 0.2),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.network(
+                    logo,
+                    height: navBarImageHeight,
+                    fit: BoxFit.contain,
                   ),
-                )
-              // The nav bar links ----------------------------
-              else
-                Row(
-                  children: navLinks.map((item) {
-                    bool isHovered = hoveredItem == item;
-                    return MouseRegion(
+                  // Mobile nav top bar ----------------------------
+                  if (isSmallScreen)
+                    MouseRegion(
                       cursor: SystemMouseCursors.click,
-                      onEnter: (_) {
-                        setState(() {
-                          hoveredItem = item;
-                        });
-                      },
-                      onExit: (_) {
-                        setState(() {
-                          hoveredItem = null;
-                        });
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.02,
-                        ),
-                        child: GestureDetector(
-                          child: Stack(
-                            children: [
-                              if (isHovered)
-                                Positioned(
-                                  bottom: 0,
-                                  left: 0,
-                                  right: 0,
-                                  child: Container(
-                                    height: 2,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              Text(
-                                item,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isMenuOpen = !isMenuOpen;
+                          });
+                        },
+                        child: Image.network(
+                          menuIcon,
+                          height: navBarImageHeight,
+                          fit: BoxFit.contain,
                         ),
                       ),
-                    );
-                  }).toList(),
-                ),
-            ],
-          ),
-        ),
-        CustomPaint(
-          size: Size(
-              // Screen width as triangle length
-              MediaQuery.of(context).size.width,
-              100), // Set the size of the canvas
-          painter: TrianglePainter(), // Use the TrianglePainter
+                    )
+                  // The nav bar links ----------------------------
+                  else
+                    Row(
+                      children: navLinks.map((item) {
+                        bool isHovered = hoveredItem == item;
+                        return MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          onEnter: (_) {
+                            setState(() {
+                              hoveredItem = item;
+                            });
+                          },
+                          onExit: (_) {
+                            setState(() {
+                              hoveredItem = null;
+                            });
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            child: GestureDetector(
+                              child: Stack(
+                                children: [
+                                  if (isHovered)
+                                    Positioned(
+                                      bottom: 0,
+                                      left: 0,
+                                      right: 0,
+                                      child: Container(
+                                        height: 2,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  Text(
+                                    item,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                ],
+              ),
+            ),
+            CustomPaint(
+              size: Size(
+                  // Screen width as triangle length
+                  MediaQuery.of(context).size.width,
+                  30), // Set the size of the canvas
+              painter: TrianglePainter(), // Use the TrianglePainter
+            ),
+          ],
         ),
         // The opened hamburger menu ----------------------------
         if (isMenuOpen && isSmallScreen)
