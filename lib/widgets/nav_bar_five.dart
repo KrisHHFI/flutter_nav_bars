@@ -82,8 +82,7 @@ class NavBarFiveState extends State<NavBarFive> {
                     // Screen width as triangle length
                     MediaQuery.of(context).size.width,
                     30), // Set the size of the canvas
-                painter: TrianglePainter(
-                    flippedVertically: true), // Use the TrianglePainter
+                painter: TrianglePainter(flippedVertically: true),
               ),
               Container(
                 padding: EdgeInsets.all(smallPadding),

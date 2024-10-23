@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'triangle_painter.dart';
 
 class NavBarSix extends StatefulWidget {
   const NavBarSix({super.key});
@@ -74,91 +75,105 @@ class NavBarSixState extends State<NavBarSix> {
         // The nav bar container and logo ----------------------------
         Align(
           alignment: Alignment.centerLeft,
-          child: Container(
-            padding: EdgeInsets.fromLTRB(10, smallPadding, 10, 10),
-            color: Color.fromRGBO(187, 187, 187, 1),
-            child: Column(
-              children: [
-                Image.network(
-                  logo,
-                  height: navBarImageHeight,
-                  fit: BoxFit.contain,
-                ),
-                SizedBox(
-                  width: logoDividerWidth,
-                  child: Divider(
-                    color: Colors.white,
-                    thickness: 2,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                // Mobile nav top bar ----------------------------
-                if (isSmallScreen)
-                  MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isMenuOpen = !isMenuOpen;
-                        });
-                      },
-                      child: Image.network(
-                        menuIcon,
-                        height: navBarImageHeight,
-                        fit: BoxFit.contain,
+          child: Row(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.fromLTRB(10, smallPadding, 10, 10),
+                color: Color.fromRGBO(187, 187, 187, 1),
+                child: Column(
+                  children: [
+                    Image.network(
+                      logo,
+                      height: navBarImageHeight,
+                      fit: BoxFit.contain,
+                    ),
+                    SizedBox(
+                      width: logoDividerWidth,
+                      child: Divider(
+                        color: Colors.white,
+                        thickness: 2,
                       ),
                     ),
-                  )
-                // The nav bar links ----------------------------
-                else
-                  Column(
-                    children: navLinks.map((item) {
-                      bool isHovered = hoveredItem == item;
-                      return MouseRegion(
+                    const SizedBox(height: 20),
+                    // Mobile nav top bar ----------------------------
+                    if (isSmallScreen)
+                      MouseRegion(
                         cursor: SystemMouseCursors.click,
-                        onEnter: (_) {
-                          setState(() {
-                            hoveredItem = item;
-                          });
-                        },
-                        onExit: (_) {
-                          setState(() {
-                            hoveredItem = null;
-                          });
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          child: GestureDetector(
-                            child: Stack(
-                              children: [
-                                if (isHovered)
-                                  Positioned(
-                                    bottom: 0,
-                                    left: 0,
-                                    right: 0,
-                                    child: Container(
-                                      height: 2,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                Text(
-                                  item,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
-                            ),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isMenuOpen = !isMenuOpen;
+                            });
+                          },
+                          child: Image.network(
+                            menuIcon,
+                            height: navBarImageHeight,
+                            fit: BoxFit.contain,
                           ),
                         ),
-                      );
-                    }).toList(),
-                  ),
-              ],
-            ),
+                      )
+                    // The nav bar links ----------------------------
+                    else
+                      Column(
+                        children: navLinks.map((item) {
+                          bool isHovered = hoveredItem == item;
+                          return MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            onEnter: (_) {
+                              setState(() {
+                                hoveredItem = item;
+                              });
+                            },
+                            onExit: (_) {
+                              setState(() {
+                                hoveredItem = null;
+                              });
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.02,
+                              ),
+                              child: GestureDetector(
+                                child: Stack(
+                                  children: [
+                                    if (isHovered)
+                                      Positioned(
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        child: Container(
+                                          height: 2,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    Text(
+                                      item,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                  ],
+                ),
+              ),
+              CustomPaint(
+                size: Size(
+                    // Screen width as triangle length
+                    MediaQuery.of(context).size.width,
+                    30), // Set the size of the canvas
+                painter: TrianglePainter(flippedVertically: true),
+                // Use the TrianglePainter
+              ),
+            ],
           ),
         ),
         // The opened hamburger menu ----------------------------
