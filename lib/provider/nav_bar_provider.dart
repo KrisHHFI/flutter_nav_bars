@@ -3,6 +3,7 @@ import '../widgets/nav_bar_one.dart';
 import '../widgets/nav_bar_two.dart';
 import '../widgets/nav_bar_three.dart';
 import '../widgets/nav_bar_four.dart';
+import '../widgets/nav_bar_five.dart';
 
 class NavBarProvider with ChangeNotifier {
   final List<Map<String, dynamic>> navBars = [
@@ -22,6 +23,10 @@ class NavBarProvider with ChangeNotifier {
     {
       'name': '4. Slanted top horizontal navigtion bar',
       'widget': const NavBarFour(),
+    },
+    {
+      'name': '5. Slanted Bottom horizontal navigation bar',
+      'widget': const NavBarFive(),
     },
   ];
 
