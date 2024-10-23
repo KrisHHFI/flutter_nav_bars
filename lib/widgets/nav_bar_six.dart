@@ -76,11 +76,11 @@ class NavBarSixState extends State<NavBarSix> {
         Align(
           alignment: Alignment.centerLeft,
           child: Row(
-            // mainAxisAlignment: MainAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
                 padding: EdgeInsets.fromLTRB(10, smallPadding, 10, 10),
-                color: Color.fromRGBO(187, 187, 187, 1),
+                color: const Color.fromRGBO(0, 0, 0, 0.2),
                 child: Column(
                   children: [
                     Image.network(
@@ -165,14 +165,18 @@ class NavBarSixState extends State<NavBarSix> {
                   ],
                 ),
               ),
-              CustomPaint(
-                size: Size(
-                    // Screen width as triangle length
-                    MediaQuery.of(context).size.width,
-                    30), // Set the size of the canvas
-                painter: TrianglePainter(flippedVertically: true),
-                // Use the TrianglePainter
-              ),
+              Column(
+                children: [
+                  CustomPaint(
+                    size: Size(
+                        // Screen width as triangle length
+                        MediaQuery.of(context).size.height,
+                        0), // Set the size of the canvas
+                    painter: TrianglePainter(flippedSideWays: true),
+                    // Use the TrianglePainter
+                  ),
+                ],
+              )
             ],
           ),
         ),
