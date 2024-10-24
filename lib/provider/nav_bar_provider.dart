@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/nav_bar_one.dart';
-import '../widgets/nav_bar_two.dart';
-import '../widgets/nav_bar_three.dart';
-import '../widgets/nav_bar_four.dart';
-import '../widgets/nav_bar_five.dart';
 import '../widgets/nav_bar_six.dart';
 
 class NavBarProvider with ChangeNotifier {
