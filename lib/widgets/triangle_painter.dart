@@ -14,8 +14,8 @@ class TrianglePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Define the paint for the triangle
     final paint = Paint()
-      ..color = Colors.red //testing colour
-      // ..color = Color.fromRGBO(0, 0, 0, 0.2)
+      //..color = Colors.red //testing colour
+      ..color = Color.fromRGBO(0, 0, 0, 0.2)
       ..style = PaintingStyle.fill; // Fill the shape
 
     var path = Path();
@@ -27,11 +27,6 @@ class TrianglePainter extends CustomPainter {
       path.moveTo(0, size.height); // Bottom-left point
       path.lineTo(size.width, size.height); // Bottom-right point
       path.lineTo(0, 0); // Top-left point (flipped)
-      // Upside down triangle
-    } else if (flippedSideWays) {
-      path.moveTo(0, 0); // Bottom-left point
-      path.lineTo(30, 0); // Right point
-      path.lineTo(0, size.width); // Top-left point (flipped)
       // Basic triangle
     } else {
       path.moveTo(0, 0); // Top-left point (right angle)

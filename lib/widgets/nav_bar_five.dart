@@ -85,7 +85,8 @@ class NavBarFiveState extends State<NavBarFive> {
                 painter: TrianglePainter(flippedVertically: true),
               ),
               Container(
-                padding: EdgeInsets.all(smallPadding),
+                padding: EdgeInsets.fromLTRB(
+                    smallPadding, smallPadding, 0, smallPadding),
                 color: const Color.fromRGBO(0, 0, 0, 0.2),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

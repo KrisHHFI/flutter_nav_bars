@@ -77,7 +77,7 @@ class NavBarSixState extends State<NavBarSix> {
           //mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.fromLTRB(10, smallPadding, 10, 10),
+              padding: EdgeInsets.fromLTRB(10, smallPadding, 0, 10),
               color: const Color.fromRGBO(0, 0, 0, 0.2),
               child: Column(
                 children: [
@@ -167,11 +167,11 @@ class NavBarSixState extends State<NavBarSix> {
               children: [
                 CustomPaint(
                   size: Size(
-                      // Screen width as triangle length
-                      MediaQuery.of(context).size.height, // Problem is here
-                      0), // Set the size of the canvas
-                  painter: TrianglePainter(flippedSideWays: true),
-                  // Use the TrianglePainter
+                    // Triangle width and height
+                    30,
+                    MediaQuery.of(context).size.height,
+                  ),
+                  painter: TrianglePainter(),
                 ),
               ],
             )
