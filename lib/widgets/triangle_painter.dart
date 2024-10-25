@@ -30,7 +30,7 @@ class TrianglePainter extends CustomPainter {
       // Basic triangle
     } else {
       path.moveTo(0, 0); // Top-left point (right angle)
-      path.lineTo(size.width, 0); // Top-right point
+      path.lineTo(size.width, 0); // Right point
       path.lineTo(0, size.height); // Bottom-left point
     }
     path.close(); // Close the path to form the triangle

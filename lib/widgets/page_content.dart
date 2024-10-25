@@ -46,12 +46,11 @@ class PageContentState extends State<PageContent> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Change nav bar?',
-                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: FloatingActionButton(
+                    child:
+                        /*
+                     FloatingActionButton(
                       onPressed: () {
                         // Change the nav bar when the button is pressed
                         Provider.of<NavBarProvider>(context, listen: false)
@@ -60,6 +59,16 @@ class PageContentState extends State<PageContent> {
                       tooltip: 'Change Nav Bar',
                       mini: true,
                       child: const Icon(Icons.arrow_forward),
+                    ),
+                    */
+                        FloatingActionButton.extended(
+                      onPressed: () {
+                        // Change the nav bar when the button is pressed
+                        Provider.of<NavBarProvider>(context, listen: false)
+                            .nextNavBar();
+                      },
+                      label: const Text('Change navigation bar'),
+                      icon: const Icon(Icons.arrow_forward),
                     ),
                   ),
                 ],
