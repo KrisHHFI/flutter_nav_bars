@@ -57,7 +57,7 @@ class NavBarSixState extends State<NavBarSix> {
   Widget build(BuildContext context) {
     bool isSmallScreen = MediaQuery.of(context).size.width < 600;
     String logo = isSmallScreen ? smallLogo : largeLogo;
-    double logoDividerWidth = isSmallScreen ? 50 : 150;
+    double logoDividerWidth = isSmallScreen ? 45 : 150;
 
     // The content which is returned to the screen ----------------------------
     return Stack(
@@ -77,7 +77,7 @@ class NavBarSixState extends State<NavBarSix> {
           //mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.fromLTRB(10, smallPadding, 0, 10),
+              padding: EdgeInsets.fromLTRB(5, smallPadding, 0, 10),
               color: const Color.fromRGBO(0, 0, 0, 0.2),
               child: Column(
                 children: [
