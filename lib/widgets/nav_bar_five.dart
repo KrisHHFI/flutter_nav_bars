@@ -86,7 +86,7 @@ class NavBarFiveState extends State<NavBarFive> {
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(
-                    smallPadding, smallPadding, 0, smallPadding),
+                    smallPadding, 0, smallPadding, smallPadding),
                 color: const Color.fromRGBO(0, 0, 0, 0.2),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
